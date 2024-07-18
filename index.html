@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Dentalist | Example Designing & Developing Website</title>
+    <title>Dentalist | EdenBridge dental clinic services</title>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./styles/main.css" type="text/css">
@@ -619,7 +619,10 @@
                                     </div>
                                 </div>
                                 <!-- Submit button -->
-                                <button type="submit" class="h-12 w-full sm:w-44 bg-primary text-white text-sm font-bold text-center leading-[3rem] rounded-xl transition-colors hover:bg-indigo-800">Book an appointment</button>
+                                 <div class="sub flex flex-col">
+                                    <div id="liveAlertPlaceholder" class="alert alert-success bg-success" role="alert"></div>
+                                    <button type="button" class="btn btn-primary h-12 w-full sm:w-44 bg-primary text-white text-sm font-bold text-center leading-[3rem] rounded-xl transition-colors hover:bg-indigo-800" id="liveAlertBtn">Book Appointment</button>
+                                 </div>
                             </div>
                         </form>
                     </div>
@@ -730,5 +733,34 @@
             </div>
         </div>
     </footer>
+
+
+
+    <!-- Modal Javascript -->
+
+<script>
+            const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+            const appendAlert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('')
+
+            alertPlaceholder.append(wrapper)
+            }
+
+            const alertTrigger = document.getElementById('liveAlertBtn')
+            if (alertTrigger) {
+            alertTrigger.addEventListener('click', () => {
+                appendAlert('Thanks for contacting us! We will get back to you soon', 'success')
+            })
+            }
+</script>
+
+
+
 </body>
 </html>
